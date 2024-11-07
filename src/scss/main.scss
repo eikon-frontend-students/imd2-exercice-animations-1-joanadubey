@@ -118,6 +118,7 @@ video {
   width: 10px;
   height: 10px;
   background: var(--black);
+  animation: pong-ball 4s linear infinite alternate;
 }
 
 .pong-paddle {
@@ -159,20 +160,49 @@ video {
     opacity: 100%;
   }
   20% {
-    transform: translateX(30px) translateY(-55px);
+    transform: translateX(30px) translateY(-60px);
     opacity: 0%;
   }
   100% {
-    transform: translateX(30px) translateY(-55px);
+    transform: translateX(30px) translateY(-60px);
     opacity: 0%;
   }
 }
 
-@keyframes pong {
+@keyframes pong-ball {
   from {
-    background-position: 0;
+    transform: translateX(-270px) translateY(-90px);
   }
   to {
-    background-position: 100% 0;
+    transform: translateX(270px) translateY(90px);
   }
+}
+
+@keyframes pong-paddle1 {
+  0% {
+    transform: translateY(-90px);
+  }
+  80% {
+    transform: translateY(25px);
+  }
+  100% {
+    transform: translateY(-90px);
+  }
+}
+
+@keyframes pong-paddle2 {
+  from {
+    transform: translateY(45px);
+  }
+  to {
+    transform: translateY(90px);
+  }
+}
+
+.pong-paddle:nth-child(2) {
+  animation: pong-paddle2 4s linear infinite alternate;
+}
+
+.pong-paddle:nth-child(1) {
+  animation: pong-paddle1 4s linear infinite alternate;
 }
